@@ -16,6 +16,15 @@ public class DisplayDevice {
 		// TODO - START
 				
 		// create a client object and use it to
+		Client client = new Client("display", Common.BROKERHOST, Common.BROKERPORT);
+		client.connect();
+		client.createTopic(Common.TEMPTOPIC);
+		client.subscribe(Common.TEMPTOPIC);
+		int i = 0;
+		while(i < COUNT){
+			System.out.println("Dispaying: " + client.receive());
+			i++; 
+		}
 		
 		// - connect to the broker - use "display" as the username
 		// - create the temperature topic on the broker
