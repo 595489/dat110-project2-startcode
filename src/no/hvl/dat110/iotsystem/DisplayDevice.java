@@ -23,8 +23,10 @@ public class DisplayDevice {
 		int i = 0;
 		while(i < COUNT){
 			System.out.println("Dispaying: " + client.receive());
-			i++; 
+			i++;
 		}
+
+		client.disconnect();
 		
 		// - connect to the broker - use "display" as the username
 		// - create the temperature topic on the broker
