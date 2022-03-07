@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
+import no.hvl.dat110.client.Client;
 import no.hvl.dat110.common.TODO;
 import no.hvl.dat110.common.Logger;
 import no.hvl.dat110.messagetransport.Connection;
@@ -52,48 +53,56 @@ public class Storage {
 
 	public void addClientSession(String user, Connection connection) {
 
+		clients.put(user, new ClientSession(user, connection));
 		// TODO: add corresponding client session to the storage
 		// See ClientSession class
 		
-		throw new UnsupportedOperationException(TODO.method());
+//		throw new UnsupportedOperationException(TODO.method());
 		
 	}
 
 	public void removeClientSession(String user) {
 
+		clients.remove(user);
 		// TODO: disconnet the client (user) 
 		// and remove client session for user from the storage
 		
-		throw new UnsupportedOperationException(TODO.method());
+//		throw new UnsupportedOperationException(TODO.method());
 		
 	}
 
 	public void createTopic(String topic) {
 
+		subscriptions.put(topic, ConcurrentHashMap.newKeySet());
 		// TODO: create topic in the storage
 
-		throw new UnsupportedOperationException(TODO.method());
+//		throw new UnsupportedOperationException(TODO.method());
 	
 	}
 
 	public void deleteTopic(String topic) {
 
+		subscriptions.remove(topic);
 		// TODO: delete topic from the storage
 
-		throw new UnsupportedOperationException(TODO.method());
+//		throw new UnsupportedOperationException(TODO.method());
 		
 	}
 
 	public void addSubscriber(String user, String topic) {
 
+		Set map = subscriptions.get(topic);
+		map.add(user);
+//		subscriptions.put(topic, map.add(user));
 		// TODO: add the user as subscriber to the topic
 		
-		throw new UnsupportedOperationException(TODO.method());
+//		throw new UnsupportedOperationException(TODO.method());
 		
 	}
 
 	public void removeSubscriber(String user, String topic) {
 
+		subscriptions.remove(topic, user);
 		// TODO: remove the user as subscriber to the topic
 
 		throw new UnsupportedOperationException(TODO.method());
