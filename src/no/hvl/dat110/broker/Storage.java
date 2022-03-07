@@ -102,9 +102,11 @@ public class Storage {
 
 	public void removeSubscriber(String user, String topic) {
 
-		subscriptions.remove(topic, user);
+		Set map = subscriptions.get(topic);
+		map.remove(user);
+//		subscriptions.remove(topic, user);
 		// TODO: remove the user as subscriber to the topic
 
-		throw new UnsupportedOperationException(TODO.method());
+//		throw new UnsupportedOperationException(TODO.method());
 	}
 }
